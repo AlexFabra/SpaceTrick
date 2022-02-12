@@ -8,10 +8,10 @@ import android.widget.CalendarView;
 
 
 public class Animation {
-    private Bitmap[ ] frames;
+    private final Bitmap[ ] frames;
     private int frameIndex;
     private boolean isPlaying=false;
-    private float frameTime;
+    private final float frameTime;
     private long lastFrame;
 
     /**

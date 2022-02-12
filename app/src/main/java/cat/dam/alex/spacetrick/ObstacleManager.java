@@ -2,20 +2,21 @@ package cat.dam.alex.spacetrick;
 
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.ColorSpace;
 import android.graphics.Paint;
 
 import java.util.ArrayList;
 
 public class ObstacleManager {
-    private ArrayList<Obstacle> obstacles;
-    private int playerGap;
-    private int obstacleGap;
-    private int obstacleHeight;
-    private int color;
+    private final ArrayList<Obstacle> obstacles;
+    private final int playerGap;
+    private final int obstacleGap;
+    private final int obstacleHeight;
+    private final int color;
     // startTime se usará para optener el tiempo exacto del ultimo update:
     private long startTime;
     //initTime se usará para obtener el tiempo exacto de cuando se crea el ObstacleManager:
-    private long initTime;
+    private final long initTime;
     private int score=0;
 
     public ObstacleManager(int playerGap, int obstacleGap, int  obstacleHeight, int color){
@@ -92,7 +93,7 @@ public class ObstacleManager {
         }
         Paint paint = new Paint();
         paint.setTextSize(100);
-        paint.setColor(Color.MAGENTA);
+        paint.setColor(Color.rgb(255,165,0));
         canvas.drawText(""+score,50,50+ paint.descent()-paint.ascent(),paint);
     }
 }

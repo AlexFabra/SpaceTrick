@@ -14,7 +14,7 @@ import android.view.SurfaceView;
 public class GamePanel extends SurfaceView implements SurfaceHolder.Callback{
     private MainThread thread;
 
-    private SceneManager manager;
+    private final SceneManager manager;
 
     public GamePanel (Context context){
         super(context);

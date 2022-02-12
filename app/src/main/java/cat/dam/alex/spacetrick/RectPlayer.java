@@ -10,26 +10,26 @@ import android.graphics.Rect;
 
 public class RectPlayer implements GameObject {
 
-    private Rect rectangle;
-    private int color;
-    private Animation idle;
-    private Animation runRight;
-    private Animation runLeft;
-    private Animation runTop;
-    private AnimationManager animManager;
+    private final Rect rectangle;
+    private final int color;
+    private final Animation idle;
+    private final Animation runRight;
+    private final Animation runLeft;
+    private final Animation runTop;
+    private final AnimationManager animManager;
 
     public RectPlayer(Rect rectangle, int color){
         this.rectangle=rectangle;
         this.color = color;
         //gestor de bitmaps: producir, decodificar bitmaps, etc.
         BitmapFactory bf = new BitmapFactory();
-        Bitmap idleImg = bf.decodeResource(Constants.CURRENT_CONTEXT.getResources(),R.drawable.hamibasic);
-        Bitmap run1Img=bf.decodeResource(Constants.CURRENT_CONTEXT.getResources(),R.drawable.correr1);
-        Bitmap run2Img=bf.decodeResource(Constants.CURRENT_CONTEXT.getResources(),R.drawable.correr2);
-        Bitmap runTopImg=bf.decodeResource(Constants.CURRENT_CONTEXT.getResources(),R.drawable.correrfondo);
-        Bitmap runTop2Img=bf.decodeResource(Constants.CURRENT_CONTEXT.getResources(),R.drawable.correrfondo2);
-        Bitmap runLeftImg=flipBitMap(bf.decodeResource(Constants.CURRENT_CONTEXT.getResources(),R.drawable.correr1));
-        Bitmap runLeft2Img=flipBitMap(bf.decodeResource(Constants.CURRENT_CONTEXT.getResources(),R.drawable.correr2));
+        Bitmap idleImg = BitmapFactory.decodeResource(Constants.CURRENT_CONTEXT.getResources(),R.drawable.hamibasic);
+        Bitmap run1Img= BitmapFactory.decodeResource(Constants.CURRENT_CONTEXT.getResources(),R.drawable.correr1);
+        Bitmap run2Img= BitmapFactory.decodeResource(Constants.CURRENT_CONTEXT.getResources(),R.drawable.correr2);
+        Bitmap runTopImg= BitmapFactory.decodeResource(Constants.CURRENT_CONTEXT.getResources(),R.drawable.correrfondo);
+        Bitmap runTop2Img= BitmapFactory.decodeResource(Constants.CURRENT_CONTEXT.getResources(),R.drawable.correrfondo2);
+        Bitmap runLeftImg=flipBitMap(BitmapFactory.decodeResource(Constants.CURRENT_CONTEXT.getResources(),R.drawable.correr1));
+        Bitmap runLeft2Img=flipBitMap(BitmapFactory.decodeResource(Constants.CURRENT_CONTEXT.getResources(),R.drawable.correr2));
 
         idle = new Animation(new Bitmap[]{idleImg},2);
         runTop = new Animation(new Bitmap[]{runTopImg,runTop2Img},0.1f);

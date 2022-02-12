@@ -9,8 +9,8 @@ public class MainThread extends Thread{
     //determinamos los frames por segundo:
     public static final int MAX_FPS=30;
     private double averageFPS;
-    private SurfaceHolder surfaceHolder;
-    private GamePanel gamePanel;
+    private final SurfaceHolder surfaceHolder;
+    private final GamePanel gamePanel;
     private boolean running;
     public static Canvas canvas;
 
@@ -64,7 +64,7 @@ public class MainThread extends Thread{
             try{
                 if(waitTime>0){
                     //paramos el thread los milisegundos de waitTime:
-                    this.sleep(waitTime);
+                    sleep(waitTime);
                 }
             }catch (Exception e){
                 e.printStackTrace();

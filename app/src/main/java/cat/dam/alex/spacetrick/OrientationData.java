@@ -12,14 +12,14 @@ import android.hardware.SensorManager;
  */
 public class OrientationData implements SensorEventListener {
 
-    private SensorManager manager;
-    private Sensor accelerometer;
-    private Sensor magnometer;
+    private final SensorManager manager;
+    private final Sensor accelerometer;
+    private final Sensor magnometer;
 
     private float[] accelOutput;
     private float[] magOutput;
 
-    private float[]orientation= new float[3];
+    private final float[]orientation= new float[3];
     private float[]getOrientation;
     public float[]startOrientation=null;
 

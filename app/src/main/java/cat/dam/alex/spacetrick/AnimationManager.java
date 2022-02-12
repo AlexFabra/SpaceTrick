@@ -6,7 +6,7 @@ import android.graphics.Rect;
 /** gestor de Animaciones: selecciona la animación y el frame que se va a dibujar.
  */
 public class AnimationManager {
-    private Animation[] animations;
+    private final Animation[] animations;
     private int animationIndex=0;
     public AnimationManager(Animation[] animations){
         this.animations=animations;

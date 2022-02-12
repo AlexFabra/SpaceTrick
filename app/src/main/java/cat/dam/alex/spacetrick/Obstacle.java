@@ -5,9 +5,9 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 
 public class Obstacle implements GameObject {
-    private Rect rectangle;
-    private Rect rectangle2;
-    private int color;
+    private final Rect rectangle;
+    private final Rect rectangle2;
+    private final int color;
 
     public Obstacle(int rectHeight, int startY, int startX, int playerGap, int color){
         this.color = color;

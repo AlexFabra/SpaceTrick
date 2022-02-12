@@ -6,8 +6,8 @@ import android.graphics.Canvas;
  * esta interfaz para ser dibujada y actualizada
  */
 public interface GameObject {
-    public void draw(Canvas canvas);
-    public void update();
+    void draw(Canvas canvas);
+    void update();
 
 
 }

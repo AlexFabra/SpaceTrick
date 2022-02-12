@@ -1,7 +1,10 @@
 package cat.dam.alex.spacetrick;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Point;
 import android.graphics.Rect;
@@ -9,27 +12,32 @@ import android.view.MotionEvent;
 
 public class GamePlayScene implements Scene{
 
-    private RectPlayer player;
+    private final RectPlayer player;
     private Point playerPoint;
     private ObstacleManager obstacleManager;
     private boolean movingPlayer=false;
     private boolean gameOver=false;
     private long gameOverTime;
-    private Rect r =new Rect();
-    private OrientationData orientationData; //gestor de sensores
+    private final Rect r =new Rect();
+    private final OrientationData orientationData; //gestor de sensores
     private long frameTime; //para controlar el lapso entre frames
 
+    //para crear un fondo de pantalla de una imagen (tal y como está ralentiza el juego)
+//    Bitmap background;
+//    Matrix m = new Matrix();
+//    Paint p = new Paint();
+
     public GamePlayScene() {
+        //background=createBackground();
         player=new RectPlayer(new Rect(100,100,200,200), Color.rgb(255,0,0));
         //posición del jugador:
         playerPoint = new Point(Constants.SCREEN_WIDTH/2,3*Constants.SCREEN_HEIGHT/4);
         //posicionamos al jugador donde ubicamos el punto:
         player.update(playerPoint);
-        obstacleManager = new ObstacleManager(200,500,75,Color.BLACK);
+        obstacleManager = new ObstacleManager(200,500,75,Color.DKGRAY);
         orientationData=new OrientationData();
         orientationData.register(); //ejecutamos registro de los sensores giroscópicos
         frameTime=System.currentTimeMillis();
-
     }
 
     @Override
@@ -65,7 +73,9 @@ public class GamePlayScene implements Scene{
     @Override
     public void draw(Canvas canvas){
         //pintamos el layout de blanco:
-        canvas.drawColor(Color.rgb(0,0,200));
+        canvas.drawColor(Color.rgb(0,0,220));
+
+        //canvas.drawBitmap(background,m,p);
         //dibujamos el jugador en el canvas pasandole a la funcion draw el lugar donde tienen que dibujarse:
         player.draw(canvas);
         //dibujamos los obstaculos :
@@ -74,7 +84,7 @@ public class GamePlayScene implements Scene{
         if(gameOver){
             Paint paint = new Paint();
             paint.setTextSize(100);
-            paint.setColor(Color.MAGENTA);
+            paint.setColor(Color.rgb(255,165,0));
             drawCenterText(canvas,paint,"Has perdido");
         }
     }
@@ -127,7 +137,7 @@ public class GamePlayScene implements Scene{
         //posición del jugador:
         playerPoint = new Point(Constants.SCREEN_WIDTH/2,3*Constants.SCREEN_HEIGHT/4);
         player.update(playerPoint);
-        obstacleManager = new ObstacleManager(200,350,75,Color.BLACK);
+        obstacleManager = new ObstacleManager(200,350,75,Color.DKGRAY);
         movingPlayer=false;
     }
 
@@ -140,5 +150,10 @@ public class GamePlayScene implements Scene{
         float x = cWidth / 2f - r.width() / 2f - r.left;
         float y = cHeight / 2f + r.height() / 2f - r.bottom;
         canvas.drawText(text, x, y, paint);
+    }
+
+    public Bitmap createBackground(){
+        BitmapFactory bf = new BitmapFactory();
+        return BitmapFactory.decodeResource(Constants.CURRENT_CONTEXT.getResources(),R.drawable.backgrass);
     }
 }
