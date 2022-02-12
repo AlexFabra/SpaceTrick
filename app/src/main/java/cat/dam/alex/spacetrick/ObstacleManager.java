@@ -60,6 +60,10 @@ public class ObstacleManager {
     /** update actualizará las variables para que la escena de los obstáculos se vaya moviendo
      */
     public void update(){
+        //esta condición reiniciará el tiempo cada vez que volvamos a la app:
+        if(startTime< Constants.INIT_TIME){
+            startTime=Constants.INIT_TIME;
+        }
         int elapsedTime = (int)(System.currentTimeMillis()-startTime);
         startTime = System.currentTimeMillis();
         float speed = //(float) (Math.sqrt(1+(startTime-initTime)/2000.0))*Constants.SCREEN_HEIGHT/(1000.0f);
